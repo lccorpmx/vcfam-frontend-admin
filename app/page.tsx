@@ -13,6 +13,7 @@ export default function Home() {
       <div className='pt-8'>
         <div>
           <h1 className='text-red-500 text-6xl'>Coach <span className='text-black'>Vidal Calderon</span></h1>
+          <h2>coach</h2>
         </div>
       </div>
     </main>
