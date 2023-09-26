@@ -27,7 +27,7 @@ import {
 
 
 
-export default function page() {
+export default function useInicio() {
 
   const [hasNotifications, setHasNotifications] = useState(true);
   //Crear la variable para el estado del switch

@@ -4,7 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 
 
-export default function useHome() {
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-bgWhite">
       <header>
