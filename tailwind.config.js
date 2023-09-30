@@ -22,6 +22,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+       
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -85,6 +86,7 @@ module.exports = {
           '20%, 40%, 60%, 80%': { transform: 'translateX(2px)' },
         },
       },
+      
     },
   },
   plugins: [require("tailwindcss-animate")],

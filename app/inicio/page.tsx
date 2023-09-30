@@ -2,8 +2,15 @@
 import { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 import { BiCircle, BiSolidBellRing } from 'react-icons/bi';
+import { BsPersonCheckFill } from 'react-icons/bs';
+import { FaUserEdit } from 'react-icons/fa';
+import { MdOutlineArrowRight } from 'react-icons/md';
+import { TbUserCancel } from 'react-icons/tb';
 import { Switch } from "@/components/ui/switch"
 import CircleStatus from '@/components/CircleStatus';
+import Image from 'next/image';
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 
 import {
@@ -24,6 +31,28 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import Link from 'next/link';
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 
 
 
@@ -62,8 +91,19 @@ export default function useInicio() {
           </SheetTrigger>
           <SheetContent className="your-custom-class">
             <SheetHeader>
-              <SheetTitle className="pt-2">Bee High México</SheetTitle>
-              <SheetDescription></SheetDescription>
+              <SheetTitle className="pt-2 text-white">VCFam</SheetTitle>
+              <SheetDescription>
+              <Alert>
+  <MdOutlineArrowRight className="h-4 w-4" />
+  <AlertTitle>Nuevo Pago de ArturoZR</AlertTitle>
+  <AlertDescription>
+    ArturoZR ha enviado un nuevo comprobante de pago
+  </AlertDescription>
+</Alert>
+
+
+
+              </SheetDescription>
             </SheetHeader>
           </SheetContent>
         </Sheet>
@@ -71,13 +111,20 @@ export default function useInicio() {
     </div>
     </div>
         </div>
-        <div className="border-b-4 border-red-500 pt-9"></div>
+
+        <div className="relative">
+  <div className="w-full h-1 border-b-4 border-red-500"></div> {/* Línea */}
+  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <Image src="/samurai.png" alt="Logo" width={120} height={120} /> {/* Reemplaza '/ruta-del-logo.png' por la ruta de tu logo y ajusta width y height según tu logo */}
+  </div>
+</div>
+
         
 
 
-        <div className='m-8 border-4 border-red-500 rounded-lg p-4 bg-white'>
+        <div className='m-8 border-4 border-red-500 rounded-lg p-4 bg-white mt-24'>
           <div className='flex items-center justify-between'>
-            <div className='text-4xl font-bold'>Coach <span className='font-medium'><br />Vidal Calderon</span></div>
+            <div className='text-4xl font-bold'>COACH <span className='font-medium'><br />Vidal Calderon</span></div>
             <div className='text-2xl'><Switch aria-checked={isSwitchOn} onClick={switchHandle} ></Switch>{isSwitchOn ? 'Disponible' : 'No disponible'}</div>
           </div>
 
@@ -90,7 +137,9 @@ export default function useInicio() {
                     <TableHead>Nombre</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Prox. Pago</TableHead>
-                    <TableHead className="text-right">Revision</TableHead>
+                    <TableHead>Revision</TableHead>
+                    <TableHead>Editar</TableHead>
+                    <TableHead>Expulsar</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -99,57 +148,165 @@ export default function useInicio() {
                     <TableCell>ArturoZR</TableCell>
                     <TableCell>Definicion</TableCell>
                     <TableCell>12/05/2023</TableCell>
-                    <TableCell className="text-right"><CircleStatus isActive={true}></CircleStatus></TableCell>
+                    <TableCell><CircleStatus isActive={true}></CircleStatus></TableCell>
+                    <TableCell><Link href={"/user"}><FaUserEdit className='text-4xl text-blue-500'></FaUserEdit></Link></TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-red-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas expulsar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Esta accion sera permanente y todo el progreso y datos almacenados del usuario seran eliminados y no podran ser recuperados
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
                   </TableRow>
                 </TableBody>
 
                 <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">02</TableCell>
-                    <TableCell>Rafael</TableCell>
+                <TableRow>
+                    <TableCell className="font-medium">01</TableCell>
+                    <TableCell>ArturoZR</TableCell>
                     <TableCell>Definicion</TableCell>
                     <TableCell>12/05/2023</TableCell>
-                    <TableCell className="text-right"><CircleStatus isActive={true}></CircleStatus></TableCell>
+                    <TableCell><CircleStatus isActive={true}></CircleStatus></TableCell>
+                    <TableCell><Link href={"/user"}><FaUserEdit className='text-4xl text-blue-500'></FaUserEdit></Link></TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-red-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas expulsar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Esta accion sera permanente y todo el progreso y datos almacenados del usuario seran eliminados y no podran ser recuperados
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
                   </TableRow>
                 </TableBody>
 
                 <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">03</TableCell>
-                    <TableCell>Kevin</TableCell>
-                    <TableCell>Volumen</TableCell>
-                    <TableCell>12/05/2023</TableCell>
-                    <TableCell className="text-right"><CircleStatus isActive={false}></CircleStatus></TableCell>
-                  </TableRow>
-                </TableBody>
-
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">03</TableCell>
-                    <TableCell>Kevin</TableCell>
-                    <TableCell>Volumen</TableCell>
-                    <TableCell>12/05/2023</TableCell>
-                    <TableCell className="text-right"><CircleStatus isActive={false}></CircleStatus></TableCell>
-                  </TableRow>
-                </TableBody>
-
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">04</TableCell>
-                    <TableCell>Mabel</TableCell>
-                    <TableCell>Volumen</TableCell>
-                    <TableCell>12/05/2023</TableCell>
-                    <TableCell className="text-right"><CircleStatus isActive={false}></CircleStatus></TableCell>
-                  </TableRow>
-                </TableBody>
-
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">05</TableCell>
-                    <TableCell>Carlos</TableCell>
+                <TableRow>
+                    <TableCell className="font-medium">01</TableCell>
+                    <TableCell>ArturoZR</TableCell>
                     <TableCell>Definicion</TableCell>
                     <TableCell>12/05/2023</TableCell>
-                    <TableCell className="text-right"><CircleStatus isActive={true}></CircleStatus></TableCell>
+                    <TableCell><CircleStatus isActive={false}></CircleStatus></TableCell>
+                    <TableCell><Link href={"/user"}><FaUserEdit className='text-4xl text-blue-500'></FaUserEdit></Link></TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-red-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas expulsar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Esta accion sera permanente y todo el progreso y datos almacenados del usuario seran eliminados y no podran ser recuperados
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
+                  </TableRow>
+                </TableBody>
+
+                <TableBody>
+                <TableRow>
+                    <TableCell className="font-medium">01</TableCell>
+                    <TableCell>ArturoZR</TableCell>
+                    <TableCell>Definicion</TableCell>
+                    <TableCell>12/05/2023</TableCell>
+                    <TableCell><CircleStatus isActive={true}></CircleStatus></TableCell>
+                    <TableCell><Link href={"/user"}><FaUserEdit className='text-4xl text-blue-500'></FaUserEdit></Link></TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-red-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas expulsar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Esta accion sera permanente y todo el progreso y datos almacenados del usuario seran eliminados y no podran ser recuperados
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
+                  </TableRow>
+                </TableBody>
+
+                <TableBody>
+                <TableRow>
+                    <TableCell className="font-medium">01</TableCell>
+                    <TableCell>ArturoZR</TableCell>
+                    <TableCell>Definicion</TableCell>
+                    <TableCell>12/05/2023</TableCell>
+                    <TableCell><CircleStatus isActive={false}></CircleStatus></TableCell>
+                    <TableCell><Link href={"/user"}><FaUserEdit className='text-4xl text-blue-500'></FaUserEdit></Link></TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-red-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas expulsar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Esta accion sera permanente y todo el progreso y datos almacenados del usuario seran eliminados y no podran ser recuperados
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
+                  </TableRow>
+                </TableBody>
+
+                <TableBody>
+                <TableRow>
+                    <TableCell className="font-medium">01</TableCell>
+                    <TableCell>ArturoZR</TableCell>
+                    <TableCell>Definicion</TableCell>
+                    <TableCell>12/05/2023</TableCell>
+                    <TableCell><CircleStatus isActive={true}></CircleStatus></TableCell>
+                    <TableCell><Link href={"/user"}><FaUserEdit className='text-4xl text-blue-500'></FaUserEdit></Link></TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-red-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas expulsar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Esta accion sera permanente y todo el progreso y datos almacenados del usuario seran eliminados y no podran ser recuperados
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -159,7 +316,7 @@ export default function useInicio() {
 
         <div className='m-8 border-4 border-red-500 rounded-lg p-4'>
           <div className='flex items-center justify-between'>
-            <div className='text-4xl font-bold'>Pago <span className='font-medium'><br />Pendiente</span></div>
+            <div className='text-4xl font-bold'>PAGO <span className='font-medium'><br />Pendiente</span></div>
           </div>
 
           <div className='border-2 border-red-500 rounded-lg mt-12 mb-6'>
@@ -167,28 +324,34 @@ export default function useInicio() {
                 <TableCaption>Lista de Asesorados Inactivos</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[100px]">Nombre</TableHead>
-                    <TableHead className="text-right">Ultimo Pago</TableHead>
+                    <TableHead className="">Nombre</TableHead>
+                    <TableHead className="">Ultimo Pago</TableHead>
+                    <TableHead className="">Editar</TableHead>
+                    <TableHead className="">Expulsar</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
                     <TableCell className="font-medium">ArturoZR</TableCell>
-                    <TableCell className="text-right">12/02/23</TableCell>
-                  </TableRow>
-                </TableBody>
-
-                <TableBody>
-                <TableRow>
-                    <TableCell className="font-medium">Ulises</TableCell>
-                    <TableCell className="text-right">12/02/23</TableCell>
-                  </TableRow>
-                </TableBody>
-
-                <TableBody>
-                <TableRow>
-                    <TableCell className="font-medium">Cristi</TableCell>
-                    <TableCell className="text-right">12/02/23</TableCell>
+                    <TableCell className="">12/02/23</TableCell>
+                    <TableCell><Link href={"/user"}><FaUserEdit className='text-4xl text-blue-500'></FaUserEdit></Link></TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-red-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas expulsar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Esta accion sera permanente y todo el progreso y datos almacenados del usuario seran eliminados y no podran ser recuperados
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -196,6 +359,82 @@ export default function useInicio() {
 
         </div>
 
+
+        <div className='m-8 border-4 border-red-500 rounded-lg p-4'>
+          <div className='flex items-center justify-between'>
+            <div className='text-4xl font-bold'>NUEVOS <span className='font-medium'><br />Asesorados</span></div>
+          </div>
+
+          <div className='border-2 border-red-500 rounded-lg mt-12 mb-6'>
+              <Table className=''>
+                <TableCaption>Lista de Nuevos Asesorados</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="">Nombre</TableHead>
+                    <TableHead className="">Edad</TableHead>
+                    <TableHead className="">Aceptar</TableHead>
+                    <TableHead className="">Rechazar</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">ArturoZR</TableCell>
+                    <TableCell className="">21</TableCell>
+                    <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><BsPersonCheckFill className='text-4xl text-green-500'></BsPersonCheckFill></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas aceptar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                              <Accordion type="single" collapsible>
+                                            <AccordionItem value="item-1">
+                                              <AccordionTrigger></AccordionTrigger>
+                                              <AccordionContent>
+                                                Yes. It adheres to the WAI-ARIA design pattern.
+                                              </AccordionContent>
+                                            </AccordionItem>
+                                          </Accordion>
+
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Expulsar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
+                      <TableCell>
+                    <AlertDialog>
+                          <AlertDialogTrigger><TbUserCancel className='text-4xl text-orange-500'></TbUserCancel></AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Estas seguro que deseas rechazar al usuario?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                              Al rechazar a usuario sus datos de registro seran olvidados y el usuario debera iniciar un nuevo registro
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                              <AlertDialogAction>Rechazar</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+          </div>
+
+        </div>
+
+
+
+
+
+
+        
 
     </div>
   )
