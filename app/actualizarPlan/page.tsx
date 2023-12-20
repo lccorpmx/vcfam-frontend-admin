@@ -1,4 +1,3 @@
-'use client'
 import React, { useState } from 'react'
 import Editor from '@/components/TextEditor'
 import { Button } from "@/components/ui/button"
@@ -24,7 +23,7 @@ import {
   } from "@/components/ui/alert-dialog"
   
 
-export async function Page() {
+export default function Page() {
     const [editorValue, setEditorValue] = useState('');
 
     const handleEditorChange = (value:any) => {
