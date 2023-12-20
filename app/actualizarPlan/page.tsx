@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+'use client'
+import React, { useState, useEffect } from 'react'
 import Editor from '@/components/TextEditor'
 import { Button } from "@/components/ui/button"
 import Header from '@/components/Header'
@@ -29,6 +30,13 @@ export default function Page() {
     const handleEditorChange = (value:any) => {
       setEditorValue(value);
     };
+
+    useEffect(() => {
+      if (typeof document !== 'undefined') {
+        // Código que depende del DOM
+        // Puedes agregar aquí cualquier lógica que necesite acceder al DOM
+      }
+    }, []); // Ajusta las dependencias según tus necesidades
   return (
     <div>
       <Header></Header>
