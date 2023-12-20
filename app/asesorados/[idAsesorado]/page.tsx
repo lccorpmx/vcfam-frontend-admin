@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/sheet"
 import Link from "next/link";
 
-export default function Page( {params}: {params: {idAsesorado:string}}) {
+export default function page( {params}: {params: {idAsesorado:string}}) {
 
   const [hasNotifications, setHasNotifications] = useState(true);
   //Crear la variable para el estado del switch
