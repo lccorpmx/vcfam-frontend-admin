@@ -24,7 +24,7 @@ import {
   } from "@/components/ui/alert-dialog"
   
 
-export default function Page() {
+export async function Page() {
     const [editorValue, setEditorValue] = useState('');
 
     const handleEditorChange = (value:any) => {
